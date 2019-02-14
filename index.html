@@ -1,49 +1,309 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+	<title>État de l'art&nbsp;: Drupal 8 et RGPD - Drupalcamp Paris 2019</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/dcp2019.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+	<!-- Printing and PDF exports -->
+	<script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h1>État de l'art&nbsp;: Drupal 8 et RGPD</h1>
+		</section>
+		<section data-background="img/cookies-tiny.jpg" class="contain">
+			<h2>Cookies pour tous !</h2>
+			<aside class="notes">
+			</aside>
+		</section>
+		<section>
+			<h2>Slide Camp et sponsors</h2>
+		</section>
+		<section>
+			<h2>RGPD c'est quoi ?</h2>
+			<p>Règlement Général sur la Protection des Données, qui encadre le traitement des données personnelles.</p>
+			<p>Adoption : 2016 - Entrée en vigueur : 2018</p>
+			<aside class="notes">
+				<h2>Article premier - Objet et objectifs</h2>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+				<p>Le présent règlement établit des règles relatives à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et des règles relatives à la libre circulation de ces données.</p>
+				<p>Le présent règlement protège les libertés et droits fondamentaux des personnes physiques, et en particulier leur droit à la protection des données à caractère personnel.</p>
+				<p>La libre circulation des données à caractère personnel au sein de l'Union n'est ni limitée ni interdite pour des motifs liés à la protection des personnes physiques à l'égard du traitement des données à caractère personnel.</p>
+			</aside>
+		</section>
+		<section>
+			<section>
+				<h2>La CNIL </h2>
+				<p><a href="https://www.cnil.fr">La Commission Nationale de l'Informatique et des Libertés</a>, elle propose plusieurs articles et documents pour informer et accompagner les entreprises dans l'application du RGPD.</p>
+				<aside class="notes">
+					<p>Dans l’univers numérique, la Commission Nationale de l'Informatique et des Libertés (CNIL) est le régulateur des données personnelles. Elle accompagne les professionnels dans leur mise en conformité et aide les particuliers à maîtriser leurs données personnelles et exercer leurs droits.</p>
+					<p>Elle a le statut d'autorité administrative indépendante (AAI). Elle peut contrôler et sanctionner</p>
+				</aside>
+			</section>
+			<section>
+				<div class="with-col">
+					<img class="plain col" data-src="img/cnil-e1.jpg">
+					<div class="col">
+						<ul class="fragment">
+							<li>Identifier les données</li>
+							<li>Déterminer qui a accès</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="with-col">
+					<img class="plain col" data-src="img/cnil-e2.jpg">
+					<div class="col">
+						<ul class="fragment">
+							<li>Réduire le nombre de données collectées</li>
+							<li>Mettre en place un contrôle des accès</li>
+							<li>Supprimer ou archiver automatiquement les données</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="with-col">
+					<img class="plain col" data-src="img/cnil-e3.jpg">
+					<div class="col">
+						<ul class="fragment">
+							<li>Informer et expliquer la collecte des données</li>
+							<li>Demander préalablement le consentement explicite</li>
+							<li>Permettre l'opposition, l'accès, la modification des données</li>
+						</ul>
+					</div>
+				</div>
+				<aside class="notes">
+					Toute personne a le droit de s’opposer, pour des motifs légitimes, au traitement de ses données, sauf si celui-ci répond à une obligation légale (ex : fichiers des impôts).
+				</aside>
+			</section>
+			<section>
+				<div class="with-col">
+					<img class="plain col" data-src="img/cnil-e4.jpg">
+					<div class="col">
+						<ul class="fragment">
+							<li>Maintenir le site à jour</li>
+							<li>Segmenter les profils utilisateurs</li>
+							<li>Anonymiser / Chiffrer les données</li>
+							<li>Informer en cas de "fuite"</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section>
+			<h2>Alors Drupal ?</h2>
+			<img class="plain" data-src="img/drupal_search_rgpd.jpg">
+			<small>22 modules avec le mot clé "GDPR" pour Drupal 8</small>
+		</section>
+		<section>
+			<h2>Drupal GDPR Compliance Team</h2>
+			<a href="https://www.drupal.org/project/drupal_gdpr_team">https://www.drupal.org/project/drupal_gdpr_team</a>
+			<p>It's not a module. It's better than that.</p>
+			<aside class="notes">
+				Ce projet est destiné à servir de lieu de rencontre pour la communauté Drupal afin de discuter et de coordonner les efforts visant à améliorer la conformité de Drupal au GDPR.
+			</aside>
+		</section>
+		<section data-background="img/wip-tiny.jpg" class="contain">
+			<aside class="notes">
+			</aside>
+		</section>
+		<section>
+			<section>
+				<h3>General Data Protection Regulation (gdpr)</h3>
+				<p>Dernière version : 8.x-2.0-alpha6 le 02/01/2019</p>
+				<p>Le module seul fourni une check list de sensibilisation et d'autres sous modules</p>
+			</section>
+			<section>
+				<h3>GDPR - Consent Tracking (gdpr_consent)</h3>
+				<p>Le module permet de récolter le consentement des utilisateurs.</p>
+				<p>Il définit une entité et un type de champ.</p>
+				<aside class="notes">
+					<p>Attention, on parle ici du sous module pour la version Drupal 8. Il existe un module gdpr_consent pour Drupal 7.</p>
+				</aside>
+			</section>
+			<section>
+				<h3>GDPR - Fields (gdpr_fields)</h3>
+				<p>Il propose à l'utilisateur de voir l'ensemble de ces données personnelles.</p>
+				<p>Côté administrateur on retrouve la liste de tous les champs présent par entité et il est possible de décider pour chacun si l'utilisateur peut y accéder et demander à "oublier" la valeur.</p>
+				<aside class="notes">
+					<p>L'administrateur peut aussi configurer une option pour anonymiser l'information au lieu de la supprimer.</p>
+				</aside>
+			</section>
+			<section>
+				<h3>GDPR - Consent Tracking (gdpr_tasks)</h3>
+				<p>Le module met en place un système de tâches (comme une demande de suppression ou d'accès) qui peut être utilisées par les visiteur et suivies par les gestionnaires du sites.</p>
+				<p>Les demandes sont traité par la cron et peuvent être review par des admins.</p>
+				<aside class="notes">
+					<p>Demandes d’accès aux données - Subject Access Requests - SARs.</p>
+				</aside>
+			</section>
+			<section>
+				<h3>GDPR - Obfuscated SQL Dump (gdpr_dump)</h3>
+				<p>Ce module met à disposition une commande drush et une interface de configuration pour réaliser des dumps de la base de donnée avec protection des informations utilisateurs.</p>
+				<h4>drush gdpr:sql:dump</h4>
+				<aside class="notes">
+					<p>Possible à faire en production, copie les tables, les nettoies puis les dumps.</p>
+					<p>La commande drush sql-sanitize détruit de la donnée. Ne faire que sur un poste de dev.</p>
+					<p>Attention à l'option --tables-list qui récupère vraiment la table d'origine. Il faut utiliser le préfix "gdpr_clone_" pour avoir les tables modifiées.</p>
+					<p>https://github.com/robiningelbrecht/drush-gdpr-dumper</p>
+					<p>https://github.com/machbarmacher/gdpr-dump</p>
+				</aside>
+			</section>
+		</section>
+		<section>
+			<h3>EU Cookie Compliance (eu_cookie_compliance)</h3>
+			<p>Dernière version : 8.x-1.2  le 12/07/2018</p>
+			<p>@TODO</p>
+		</section>
+		<section>
+			<h3>General Data Protection Regulation Compliance (gdpr_compliance)</h3>
+			<p>Dernière version : 8.x-1.12 le 23/10/2018</p>
+			<p>Il permet la création d'une page de mentions légales associées à des interfaces de demande de consentement (bandeau, case à cocher dans un formulaire)</p>
+			<aside class="notes">
+				<p>Un seul mainteneur.</p>
+			</aside>
+		</section>
+		<section>
+			<h3>IP Anonymize (ip_anon)</h3>
+			<p>Dernière version : 8.x-1.5  le 17/11/2018</p>
+			<p>Ce module permet de modifier les ips sauvées en base. Il prend en charge une bonne dizaine de module.</p>
+			<aside class="notes">
+				<p>Il est à noter que cela passe par une tâche régulière (cron) et donc il y a un moment où la vrai IP se trouve dans la base de donnée.</p>
+			</aside>
+		</section>
+		<section>
+			<h3>Cookiebot (cookiebot)</h3>
+			<p>Dernière version : 8.x-1.0-alpha5 le 31/10/2018</p>
+			<p>Le module propose une intégration du service tier Cookiebot. La partie visible sur le site est une bannière de consentement aux cookies.</p>
+			<aside class="notes">
+				<p>Cookiebot est un service pouvant être payant.</p>
+			</aside>
+		</section>
+		<section>
+			<h3>GDPR Tag Manager (gdpr_tag_manager)</h3>
+			<p>Dernière version : 8.x-1.1 le 13/12/2018</p>
+			<p>Le module inclut le Google tag Manager à travers un système respectant la RGPD, bandeau cookie via "cookie consent library", identification du pays du visiteur via l'ip, etc</p>
+			<p>Attention, si vous utilisez aussi le module GoogleTagManager (google_tag) l'insertion du tag se fera 2 fois.</p>
+			<aside class="notes">
+				<p>Un seul mainteneur.</p>
+			</aside>
+		</section>
+		<section>
+			<h3>CookieConsent (cookieconsent)</h3>
+			<p>Dernière version :  8.x-1.4 le 02/07/2018</p>
+			<p>Ce module fait l'intégration de la librairie CookieConsent</p>
+			<aside class="notes">
+				<p></p>
+			</aside>
+		</section>
+		<section>
+			<h3>Cryptolog (cryptolog)</h3>
+			<p>Dernière version : 8.x-1.3 le 05/12/2018</p>
+			<p>Le module remplace les ips des visiteurs par une version hashé. L'ip original est temporairement retrouvable mais pas stockée.</p>
+			<aside class="notes">
+				<p>Cryptolog nécessite que le PHP soit compilé avec le support des IPv6.</p>
+			</aside>
+		</section>
+		<section>
+			<h3>Drupal core</h3>
+			<p>Il est possible de laisser la possibilité aux utilisateurs de supprimer leur compte.</p>
+			<aside class="notes">
+				<p></p>
+			</aside>
+		</section>
+		<section>
+			<h3>D'autres modules 1/2</h3>
+			<p>Voting API (votingapi) inclut un système d'anonymisation de l'ip du votant.</p>
+			<p>Smart IP (smart_ip) est un module permettant de définir la position géographique d'un visiteur à partir de son IP. C'est une dépendance de modules comme "EU Cookie Compliance" ou "Weather". Il propose des functions pour supprimer et bloquer les informations obtenues.</p>
+		</section>
+		<section>
+			<h3>D'autres modules 2/2</h3>
+			<p>deGov Simplenews (degov_simplenews) apporte plusieurs fonctionnalités "RGPD" au module Simplenews". Récolte de consentement, mentions d'informations (privacy policy), etc</p>
+			<p>Advertising Entity (ad_entity) est un module intégrant plusieurs fournisseurs de publicité et il propose une intégration avec Consent ou EU Cookie Compliance.</p>
+		</section>
+		<section>
+			<h3>Autres Sujets</h3>
+			<p>Blizz Vanisher / Tacjs / Tarte au citron</p>
+			<p class="fragment">Matomo</p>
+			<p class="fragment">Mailchimp - Mailchimp Popup Block</p>
+			<p class="fragment">Mask User Data</p>
+			<p class="fragment">Consent - service oil - et d'autres</p>
+			<p class="fragment">Quantcast ? </p>
+			<aside class="notes">
+				<p>TAC : Faites votre intégration de tarte au citron à la main. Le module utilise la version payante pour un travail incomplet.</p>
+				<p>UTILISEZ Matomo, bye bye GA : l'outil propose des options de respect du RGPD pas encore visible dans le module d'intégration  (qui de toute façon est optionnel)</p>
+				<p>@TODO description module, Pas RGPD, le dump contient les données.</p>
+				<p>Module d'inclusion de service tier. sauf en cas d'intégration spécifique faites vous même le boulot.</p>
+				<p>Quantcast, pas de module, mais comme dit juste avant, faites le vous même. Hey au fait on peut configurer l'affichage du bouton de refus dès le début.</p>
+			</aside>
+		</section>
+		<section>
+			<h2>Crédits</h2>
+			<p>Images et ressources du site de la <a href="https://www.cnil.fr/">CNIL</a></p>
+			<p>La présentation "Overview of GDPR contrib modules" de <a href="https://twitter.com/docseee">Dominika Péterová</a>
+				et <a href="https://twitter.com/BaluErtl">Balu Ertl</a></p>
+			<p>Photo "Cookies" : Claire Hernandez</p>
+			<p>Photo "Caution WIP" : <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 </a><a href="https://www.flickr.com/photos/kevandotorg/">Kevan</a></p>
+			<aside class="notes">
+				Le document google est en accès limité il faut demander à Balu Ertl.
+			</aside>
+		</section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+		<section>
+			<h2>Merci</h2>
+			<p><a href="http://happyculture.coop"><img class="plain" src="img/happyculture_long_color.png" /></a></p>
+			<p><a href="https://drupal.org/user/116397">Guillaume Bec</a> - <a href="https://twitter.com/Bes_fr/">@Bes_fr</a></p>
+			<img class="plain" src="img/bes-do-lul.jpg" />
+			<p>guillaume@happyculture.coop</p>
+			<aside class="notes">
+			</aside>
+		</section>
+		<section>
+			<h2>Vos questions !</h2>
+			<aside class="notes">
+			</aside>
+		</section>
+		<section>
+			<h2>Slide</h2>
+			<aside class="notes">
+			</aside>
+		</section>
+	</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    dependencies: [
+      { src: 'plugin/markdown/marked.js' },
+      { src: 'plugin/markdown/markdown.js' },
+      { src: 'plugin/notes/notes.js', async: true },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
+</body>
 </html>

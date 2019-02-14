@@ -850,7 +850,7 @@ The display order of fragments can be controlled using the `data-fragment-index`
 
 When a slide fragment is either shown or hidden reveal.js will dispatch an event.
 
-Some libraries, like MathJax (see #505), get confused by the initially hidden fragment elements. Often times this can be fixed by calling their update or render function from this callback.
+Some libraries, like MathJax (see #505), get confused by the ini tially hidden fragment elements. Often times this can be fixed by calling their update or render function from this callback.
 
 ```javascript
 Reveal.addEventListener( 'fragmentshown', function( event ) {
