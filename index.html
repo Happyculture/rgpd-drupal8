@@ -27,15 +27,10 @@
 		<section>
 			<h1>État de l'art&nbsp;: Drupal 8 et RGPD</h1>
 		</section>
-		<section data-background="img/cookies-tiny.jpg" class="contain">
-			<h2>Cookies pour tous !</h2>
-			<aside class="notes">
-			</aside>
-		</section>
-		<section>
+		<!--section>
 			<h2>Slide Camp et sponsors</h2>
-		</section>
-		<section>
+		</section-->
+		<section data-state="popin">
 			<h2>RGPD c'est quoi ?</h2>
 			<p>Règlement Général sur la Protection des Données, qui encadre le traitement des données personnelles.</p>
 			<p>Adoption : 2016 - Entrée en vigueur : 2018</p>
@@ -61,8 +56,8 @@
 					<img class="plain col" data-src="img/cnil-e1.jpg">
 					<div class="col">
 						<ul class="fragment">
-							<li>Identifier les données</li>
-							<li>Déterminer qui a accès</li>
+							<li class="highlight-blue">Identifier les données</li>
+							<li class="highlight-blue">Déterminer qui a accès</li>
 						</ul>
 					</div>
 				</div>
@@ -114,6 +109,15 @@
 			<small>22 modules avec le mot clé "GDPR" pour Drupal 8</small>
 		</section>
 		<section>
+			<h2>Drupal core</h2>
+			<p>RGPD Ready ! En quelque sorte...</p>
+			<p>L'utilisateur peut voir ses données.</p>
+			<p>Il peut supprimer son compte et ses données.</p>
+			<aside class="notes">
+				<p></p>
+			</aside>
+		</section>
+		<section data-state="modal">
 			<h2>Drupal GDPR Compliance Team</h2>
 			<a href="https://www.drupal.org/project/drupal_gdpr_team">https://www.drupal.org/project/drupal_gdpr_team</a>
 			<p>It's not a module. It's better than that.</p>
@@ -169,16 +173,12 @@
 			</section>
 		</section>
 		<section>
-			<h3>EU Cookie Compliance (eu_cookie_compliance)</h3>
-			<p>Dernière version : 8.x-1.2  le 12/07/2018</p>
-			<p>@TODO</p>
-		</section>
-		<section>
 			<h3>General Data Protection Regulation Compliance (gdpr_compliance)</h3>
 			<p>Dernière version : 8.x-1.12 le 23/10/2018</p>
 			<p>Il permet la création d'une page de mentions légales associées à des interfaces de demande de consentement (bandeau, case à cocher dans un formulaire)</p>
 			<aside class="notes">
 				<p>Un seul mainteneur.</p>
+				<p>Ne sauve pas le consentement.</p>
 			</aside>
 		</section>
 		<section>
@@ -190,20 +190,37 @@
 			</aside>
 		</section>
 		<section>
+			<h3>Cryptolog (cryptolog)</h3>
+			<p>Dernière version : 8.x-1.3 le 05/12/2018</p>
+			<p>Le module remplace les ips des visiteurs par une version hashé. L'ip original est temporairement retrouvable mais pas stockée.</p>
+			<aside class="notes">
+				<p>Cryptolog nécessite que le PHP soit compilé avec le support des IPv6.</p>
+			</aside>
+		</section>
+		<section data-background="img/cookies-tiny.jpg" class="contain">
+			<h2>Cookies pour tous !</h2>
+			<aside class="notes">
+			</aside>
+		</section>
+		<section>
+			<h3>EU Cookie Compliance (eu_cookie_compliance)</h3>
+			<p>Dernière version : 8.x-1.2  le 12/07/2018</p>
+			<p>Un des modules les plus utilisés (depuis 2012).</p>
+			<p>Il permet la mise en place d'une bannière de demande de consentement pour les cookies du site.</p>
+			<p>Il ne propose pas encore de choix par cookies ou catégories <a href="https://www.drupal.org/project/eu_cookie_compliance/issues/2989038">mais c'est en cours</a>.</p>
+			<aside class="notes">
+				<p>Le module propose un plugin de sauvegarde basique du consentement en base de donnée (IP), avec possibilité de le retirer.</p>
+				<p>Le module permet aussi de désactiver des javascripts.</p>
+				<p>80 000 install</p>
+				<p>https://www.drupal.org/project/eu_cookie_compliance/issues/2989038</p>
+			</aside>
+		</section>
+		<section>
 			<h3>Cookiebot (cookiebot)</h3>
 			<p>Dernière version : 8.x-1.0-alpha5 le 31/10/2018</p>
 			<p>Le module propose une intégration du service tier Cookiebot. La partie visible sur le site est une bannière de consentement aux cookies.</p>
 			<aside class="notes">
 				<p>Cookiebot est un service pouvant être payant.</p>
-			</aside>
-		</section>
-		<section>
-			<h3>GDPR Tag Manager (gdpr_tag_manager)</h3>
-			<p>Dernière version : 8.x-1.1 le 13/12/2018</p>
-			<p>Le module inclut le Google tag Manager à travers un système respectant la RGPD, bandeau cookie via "cookie consent library", identification du pays du visiteur via l'ip, etc</p>
-			<p>Attention, si vous utilisez aussi le module GoogleTagManager (google_tag) l'insertion du tag se fera 2 fois.</p>
-			<aside class="notes">
-				<p>Un seul mainteneur.</p>
 			</aside>
 		</section>
 		<section>
@@ -214,19 +231,24 @@
 				<p></p>
 			</aside>
 		</section>
-		<section>
-			<h3>Cryptolog (cryptolog)</h3>
-			<p>Dernière version : 8.x-1.3 le 05/12/2018</p>
-			<p>Le module remplace les ips des visiteurs par une version hashé. L'ip original est temporairement retrouvable mais pas stockée.</p>
+		<!--section data-state="leave"-->
+		<section data-state="leave">
+			<h3>Et bien d'autres</h3>
+			<p>GDPR Cookie Alert (cookie_gdpr)</p>
+			<p>Consent (consent) - OIL service</p>
+			<p>Cookie Control (cookiecontrol) - OIL service</p>
+			<p>Blizz Vanisher / Tacjs - Tarte au citron</p>
 			<aside class="notes">
-				<p>Cryptolog nécessite que le PHP soit compilé avec le support des IPv6.</p>
+				<p>TAC : Faites votre intégration de tarte au citron à la main. Le module utilise la version payante pour un travail incomplet.</p>
 			</aside>
 		</section>
 		<section>
-			<h3>Drupal core</h3>
-			<p>Il est possible de laisser la possibilité aux utilisateurs de supprimer leur compte.</p>
+			<h3>GDPR Tag Manager (gdpr_tag_manager)</h3>
+			<p>Dernière version : 8.x-1.1 le 13/12/2018</p>
+			<p>Le module inclut le Google tag Manager à travers un système respectant la RGPD, bandeau cookie via "cookie consent library", identification du pays du visiteur via l'ip, etc</p>
+			<p>Attention, si vous utilisez aussi le module GoogleTagManager (google_tag) l'insertion du tag se fera 2 fois.</p>
 			<aside class="notes">
-				<p></p>
+				<p>Un seul mainteneur.</p>
 			</aside>
 		</section>
 		<section>
@@ -241,17 +263,15 @@
 		</section>
 		<section>
 			<h3>Autres Sujets</h3>
-			<p>Blizz Vanisher / Tacjs / Tarte au citron</p>
-			<p class="fragment">Matomo</p>
+			<p>Matomo</p>
 			<p class="fragment">Mailchimp - Mailchimp Popup Block</p>
 			<p class="fragment">Mask User Data</p>
-			<p class="fragment">Consent - service oil - et d'autres</p>
 			<p class="fragment">Quantcast ? </p>
+			<p class="fragment">Matomo</p>
 			<aside class="notes">
-				<p>TAC : Faites votre intégration de tarte au citron à la main. Le module utilise la version payante pour un travail incomplet.</p>
 				<p>UTILISEZ Matomo, bye bye GA : l'outil propose des options de respect du RGPD pas encore visible dans le module d'intégration  (qui de toute façon est optionnel)</p>
-				<p>@TODO description module, Pas RGPD, le dump contient les données.</p>
-				<p>Module d'inclusion de service tier. sauf en cas d'intégration spécifique faites vous même le boulot.</p>
+				<p>Le module et l'api Mailchimp ne fourniraient pas encore de feature RGPD, ce module implémente une pop-up d'inscription compatible.</p>
+				<p>Mask User Data: Le module permet de lister des champs user qui seront remplacé par des fausses données, pas RGPD, le dump contient les données.</p>
 				<p>Quantcast, pas de module, mais comme dit juste avant, faites le vous même. Hey au fait on peut configurer l'affichage du bouton de refus dès le début.</p>
 			</aside>
 		</section>
@@ -266,7 +286,6 @@
 				Le document google est en accès limité il faut demander à Balu Ertl.
 			</aside>
 		</section>
-
 		<section>
 			<h2>Merci</h2>
 			<p><a href="http://happyculture.coop"><img class="plain" src="img/happyculture_long_color.png" /></a></p>
@@ -277,15 +296,15 @@
 			</aside>
 		</section>
 		<section>
-			<h2>Vos questions !</h2>
+			<h2>C'est à vous !</h2>
 			<aside class="notes">
 			</aside>
 		</section>
-		<section>
+		<!--section>
 			<h2>Slide</h2>
 			<aside class="notes">
 			</aside>
-		</section>
+		</section-->
 	</div>
 </div>
 
@@ -304,6 +323,83 @@
       { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
     ]
   });
+
+  Reveal.enableJoke = true;
+  Reveal.addEventListener('popin', function() {
+    if (Reveal.enableJoke === true) {
+      var html = '<h3>Pssst, Tu veux un cookie ?</h3><sup>Oui !</sup><small>non</small>';
+      var popup = document.createElement('div');
+      popup.innerHTML = html;
+      popup.setAttribute('id', 'sliding-popup');
+      popup.style.height = 'auto';
+      popup.style.width = '100%';
+      popup.style.display = 'none';
+      this.appendChild(popup);
+      var height = '80px';
+      popup.style.display = '';
+      if (popup.classList) {
+        popup.classList.add('sliding-popup-bottom');
+      }
+      else {
+        popup.className += ' ' + 'sliding-popup-bottom';
+      }
+      popup.style.bottom = 0;
+      popup.animate([{bottom: '-80px'}, {bottom: 0}], 2000);
+      var revealdom = this;
+      popup.onclick = function () {
+        revealdom.removeChild(this);
+      };
+    }
+  }, false );
+
+  Reveal.addEventListener('modal', function () {
+    if (Reveal.enableJoke === true) {
+      var html = '<div class="joke-modal"><div class="joke-modal-content"><span class="joke-close-button">×</span><h1>Hey, Listen !</h1><p>Inscrit toi à ma newsletter !</p><img src="img/The_Legend_of_Zelda_-_Fairy.svg" /></div></div>';
+      var modal = document.createElement('div');
+      modal.innerHTML = html;
+      this.appendChild(modal);
+      var revealdom = this;
+      modal.onclick = function () {
+        revealdom.removeChild(this);
+      };
+      setTimeout(function () {
+        if (modal.getElementsByClassName("joke-modal")[0].classList) {
+          modal.getElementsByClassName("joke-modal")[0].classList.add('joke-show-modal');
+        }
+        else {
+          modal.getElementsByClassName("joke-modal")[0].className += ' ' + 'joke-show-modal';
+        }
+      }, 2000);
+    }
+
+  }, false );
+
+  Reveal.addEventListener('leave', function () {
+    if (Reveal.enableJoke === true) {
+      var revealdom = this;
+      var popupCounter = 0;
+      document.onmouseout = function() {
+        if (popupCounter < 1) {
+          var html = '<div class="joke-modal"><div class="joke-modal-content"><span class="joke-close-button">×</span><h2>Vous partez déjà ?</h2><p>À bientôt... Revenez vite !</p></div></div>';
+          var modal = document.createElement('div');
+          modal.innerHTML = html;
+          revealdom.appendChild(modal);
+          modal.onclick = function () {
+            revealdom.removeChild(this);
+          };
+          setTimeout(function () {
+            if (modal.getElementsByClassName("joke-modal")[0].classList) {
+              modal.getElementsByClassName("joke-modal")[0].classList.add('joke-show-modal');
+            }
+            else {
+              modal.getElementsByClassName("joke-modal")[0].className += ' ' + 'joke-show-modal';
+            }
+          }, 10);
+        }
+        popupCounter++;
+      }
+    }
+  }, false );
 </script>
 </body>
 </html>

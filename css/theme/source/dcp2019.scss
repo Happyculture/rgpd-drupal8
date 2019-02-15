@@ -47,6 +47,87 @@ $selectionBackgroundColor: #fac42b;
   }
 }
 
+/* joking part */
+.sliding-popup-bottom {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  color: black;
+  font-family: "Open Sans", sans-serif;
+  font-size: 40px;
+  font-weight: normal;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 99999;
+  > * {
+    margin: 0 1em !important;
+  }
+  h3 {
+    color: black !important;;
+  }
+}
+
+.joke-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  z-index: 10;
+}
+.joke-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem !important;
+  width: 60rem !important;
+  border-radius: 0.5rem;
+  > * {
+    color: black !important;
+    font-family: "Open Sans", sans-serif;
+    font-size: 40px;
+    font-weight: normal;
+  }
+
+  > p {
+    float: left;
+  }
+
+  > img {
+    float: right;
+  }
+}
+.joke-close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+.joke-close-button:hover {
+  background-color: darkgray;
+}
+.joke-show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
