@@ -43,7 +43,7 @@
 			</aside>
 		</section>
 		<section>
-			<section>
+			<section data-state="leave">
 				<h2>La CNIL </h2>
 				<p><a href="https://www.cnil.fr">La Commission Nationale de l'Informatique et des Libertés</a>, elle propose plusieurs articles et documents pour informer et accompagner les entreprises dans l'application du RGPD.</p>
 				<aside class="notes">
@@ -295,7 +295,7 @@
 			<aside class="notes">
 			</aside>
 		</section>
-		<section>
+		<section data-state="feedback">
 			<h2>C'est à vous !</h2>
 			<aside class="notes">
 			</aside>
@@ -378,28 +378,88 @@
     if (Reveal.enableJoke === true) {
       var revealdom = this;
       var popupCounter = 0;
-      document.onmouseout = function() {
-        if (popupCounter < 1) {
-          var html = '<div class="joke-modal"><div class="joke-modal-content"><span class="joke-close-button">×</span><h2>Vous partez déjà ?</h2><p>À bientôt... Revenez vite !</p></div></div>';
-          var modal = document.createElement('div');
-          modal.innerHTML = html;
-          revealdom.appendChild(modal);
-          modal.onclick = function () {
-            revealdom.removeChild(this);
-          };
-          setTimeout(function () {
-            if (modal.getElementsByClassName("joke-modal")[0].classList) {
-              modal.getElementsByClassName("joke-modal")[0].classList.add('joke-show-modal');
-            }
-            else {
-              modal.getElementsByClassName("joke-modal")[0].className += ' ' + 'joke-show-modal';
-            }
-          }, 10);
+      addEvent(document, "mouseout", function(e) {
+        e = e ? e : window.event;
+        var from = e.relatedTarget || e.toElement;
+        if (!from || from.nodeName == "HTML") {
+          if (popupCounter < 1) {
+            var html = '<div class="joke-modal"><div class="joke-modal-content"><span class="joke-close-button">×</span><h2>Vous partez déjà ?</h2><p>À bientôt... Revenez vite !</p></div></div>';
+            var modal = document.createElement('div');
+            modal.innerHTML = html;
+            revealdom.appendChild(modal);
+            modal.onclick = function () {
+              revealdom.removeChild(this);
+            };
+            setTimeout(function () {
+              if (modal.getElementsByClassName("joke-modal")[0].classList) {
+                modal.getElementsByClassName("joke-modal")[0].classList.add('joke-show-modal');
+              }
+              else {
+                modal.getElementsByClassName("joke-modal")[0].className += ' ' + 'joke-show-modal';
+              }
+            }, 10);
+          }
+          popupCounter++;
         }
-        popupCounter++;
-      }
+      });
     }
   }, false );
+
+  Reveal.addEventListener('feedback', function () {
+    if (Reveal.enableJoke === true) {
+      var html = '<span>Feedback</span>';
+      var popup = document.createElement('div');
+      popup.innerHTML = html;
+      popup.setAttribute('id', 'side-feed');
+      popup.style.height = 'auto';
+      popup.style.width = 'auto';
+      //popup.style.display = 'none';
+      this.appendChild(popup);
+      popup.style.display = '';
+      if (popup.classList) {
+        popup.classList.add('sliding-side-feed');
+      }
+      else {
+        popup.className += ' ' + 'sliding-side-feed';
+      }
+      popup.style.right = 0;
+      popup.animate([{right: '-150px'}, {right: 0}], 1000);
+      var revealdom = this;
+
+      var htmlmod = '<div class="joke-modal"><div class="joke-modal-content feedback-joke"><span class="joke-close-button">×</span><h2>Alors ça vous a plu ?</h2><p>Oui</p> <p>Super!</p> <p>Meh</p></div></div>';
+      var modal = document.createElement('div');
+      modal.innerHTML = htmlmod;
+      modal.onclick = function () {
+        revealdom.removeChild(this);
+      };
+
+      popup.onclick = function () {
+        revealdom.appendChild(modal);
+        if (modal.getElementsByClassName("joke-modal")[0].classList) {
+          modal.getElementsByClassName("joke-modal")[0].classList.add('joke-show-modal');
+        }
+        else {
+          modal.getElementsByClassName("joke-modal")[0].className += ' ' + 'joke-show-modal';
+        }
+      };
+      popup.onmouseover = function () {
+        popup.animate([{right: 0}, {right: '10px'}], 100);
+        popup.style.right = '10px';
+      };
+      popup.onmouseleave = function () {
+        popup.style.right = 0;
+      };
+    }
+  }, false );
+
+  function addEvent(obj, evt, fn) {
+    if(obj.addEventListener) {
+      obj.addEventListener(evt, fn, false);
+    }
+    else if (obj.attachEvent) {
+      obj.attachEvent("on" + evt, fn);
+    }
+  }
 </script>
 </body>
 </html>

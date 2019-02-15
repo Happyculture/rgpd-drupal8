@@ -42,6 +42,20 @@
   .sliding-popup-bottom h3 {
     color: black !important; }
 
+.sliding-side-feed {
+  background-color: cadetblue;
+  color: black;
+  margin: 0;
+  position: fixed;
+  right: 0;
+  top: 30%;
+  transform: rotate(270deg) !important;
+  padding: 5px !important;
+  transform-origin: right bottom !important;
+  border-radius: 4px; }
+  .sliding-side-feed:hover {
+    cursor: pointer; }
+
 .joke-modal {
   position: fixed;
   left: 0;
@@ -91,6 +105,10 @@
   visibility: visible;
   transform: scale(1);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; }
+
+.feedback-joke p {
+  padding: 0 50px;
+  text-align: center; }
 
 /*********************************************
  * GLOBAL STYLES
